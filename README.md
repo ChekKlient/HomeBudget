@@ -1,6 +1,6 @@
 # HomeBudget
 Application that helps you to manage your home budget. 
-This application was coded in Java with Spring Boot and Vaadin frameworks and MySQL database. 
+This application was coded in Java with Spring Boot. Vaadin frameworks and MySQL database. 
 From Spring framework albo Spring Security and Spring Data was used.
 You can try it using the link attached below. 
 https://djedrzejak-home-budget.herokuapp.com/ 
