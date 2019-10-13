@@ -1,0 +1,10 @@
+$v-app-loading-text: "Loading Resources...";
+$v-font-family:Roboto;
+
+@import "../valo/valo";
+
+@mixin scrooge {
+  @include valo;
+	
+
+}

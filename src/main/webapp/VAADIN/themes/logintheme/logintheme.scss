@@ -1,0 +1,40 @@
+// Modify the base color of the theme background: url("../logintheme/img/background.jpg");
+.logintheme.v-app {
+	background: rgba(120, 120, 130, 1);
+}
+ 
+/* Import the valo theme.*/
+/* This only allows us to use the mixins defined in it and does not add any styles by itself. */
+@import "../valo/valo";
+
+/* This contains all of your theme.*/
+/* If somebody wants to extend the theme she will include this mixin. */
+@mixin logintheme {
+	@include valo;
+
+  /* Insert your theme rules here */
+
+.v-app-loading:before {
+	z-index: 100;
+	width: 400px;
+	height: 300px;
+	margin-left: -200px;
+	margin-top: -150px;
+	background: url("../logintheme/img/spinner.gif") no-repeat;
+}
+
+.v-app-loading {
+	background:red;
+}
+  
+.v-panel {
+	background: rgba(255, 255, 255, 0.5);
+	border-radius: 20px;
+	overflow:hidden !important;
+}
+	
+.button, .textField {
+	width: 200px;
+}
+
+}
