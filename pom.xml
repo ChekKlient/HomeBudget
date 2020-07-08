@@ -88,6 +88,7 @@
 	</dependencyManagement>
 
 	<build>
+       <defaultGoal>spring-boot:run</defaultGoal>
 
        <defaultGoal>spring-boot:run</defaultGoal>
 		<plugins>
