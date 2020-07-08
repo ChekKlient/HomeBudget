@@ -82,7 +82,7 @@ public class PlannedEntriesView extends VerticalLayout implements View, Refresha
 	private void init() {
 		loadEntryTypes();
 		setMonthYear();
-		monthPanelTitle = new Label("Harmonogram na " + month + "-" + year);
+		monthPanelTitle = new Label("Диаграмма по " + month + "-" + year);
 		rootPanel = new HorizontalLayout();
 		predictionsPanel = new HorizontalLayout();
 		monthPanel = new HorizontalLayout();

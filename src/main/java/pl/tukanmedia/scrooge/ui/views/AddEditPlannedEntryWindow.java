@@ -73,17 +73,17 @@ public class AddEditPlannedEntryWindow extends Window implements ClickListener {
 	}
 	
 	private void layout() {
-		entryType = new ComboBox<>("Typ");
+		entryType = new ComboBox<>("Статья");
 		typeGroup = new RadioButtonGroup<>();
 		typeGroup.setItems(OperationType.getAll());
 		typeGroup.setSelectedItem(OperationType.LOSS);
 		typeGroup.setItemCaptionGenerator(item -> item.getDescription());
-		description = new TextField("Opis");
-		amount = new TextField("Kwota");
-		String title = plannedEntry.getId() == null ? "Dodaj" : "Zmień";
+		description = new TextField("Заказ");
+		amount = new TextField("Сумма С НДС");
+		String title = plannedEntry.getId() == null ? "Добавить" : "Изменить";
 		saveBtn = new Button(title, this);
-		clearBtn = new Button("Wyczyść", this);
-		removeBtn = new Button("Usuń", this);
+		clearBtn = new Button("Очистить", this);
+		removeBtn = new Button("Удалить", this);
 		
 		root = new VerticalLayout();
 		root.addComponent(entryType);
@@ -113,7 +113,7 @@ public class AddEditPlannedEntryWindow extends Window implements ClickListener {
 		try {
 			binder.writeBean(plannedEntry);
 			plannedEntryController.save(plannedEntry);
-			Notification.show("Dodano wpis");
+			Notification.show("Запись добавлено");
 			refreshUI();
 			close();
 		} catch (ValidationException e) {
@@ -130,12 +130,12 @@ public class AddEditPlannedEntryWindow extends Window implements ClickListener {
 	public void bind() {
 		binder = new Binder<>(PlannedEntry.class);
 		binder.setBean(plannedEntry);	
-		binder.forMemberField(amount).withConverter(new StringToBigDecimalConverter("Wprowadzona wartość nie jest liczbą"));
+		binder.forMemberField(amount).withConverter(new StringToBigDecimalConverter("Стоимость не правильная"));
 		binder.bindInstanceFields(this);
 	}
 	
 	private void setWindowSettings() {
-		String title = plannedEntry.getId() == null ? "Dodaj nowy wpis" : "Edytuj wpis";
+		String title = plannedEntry.getId() == null ? "Добавить запись" : "Редактировать запись";
 		setCaption(title);
 		center();
 		setSizeUndefined();
@@ -163,7 +163,7 @@ public class AddEditPlannedEntryWindow extends Window implements ClickListener {
 	
 	private void delete(Long id) {
 		plannedEntryController.delete(id);
-		Notification.show("Wpis został usunięty");
+		Notification.show("Запись удалена");
 		refreshUI();
 	}
 

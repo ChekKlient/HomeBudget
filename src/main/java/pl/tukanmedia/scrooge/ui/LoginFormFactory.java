@@ -51,18 +51,18 @@ public class LoginFormFactory {
 			root.setMargin(true);
 			root.setHeight("100%");
 			
-			panel = new Panel("Panel logowania");
+			panel = new Panel("Авторизация");
 			panel.setSizeUndefined();
 			
-			loginBtn = new Button("Zaloguj");
+			loginBtn = new Button("Войти");
 			loginBtn.setStyleName(ValoTheme.BUTTON_FRIENDLY);
-			signupBtn = new Button("Zarejestruj");
+			signupBtn = new Button("Реигстрация");
 			signupBtn.setStyleName(ValoTheme.BUTTON_PRIMARY);
 			
 			username = new TextField("Login");
-			username.setDescription("Wprowadź login");
-			passwordField = new PasswordField("Hasło");
-			passwordField.setDescription("Wprowadź hasło");
+			username.setDescription("Укажите логин");
+			passwordField = new PasswordField("Password");
+			passwordField.setDescription("Укажите пароль");
 			passwordField.addShortcutListener(new ShortcutListener("ABC", KeyCode.ENTER, null) {
 				private static final long serialVersionUID = 1L;
 
@@ -124,15 +124,15 @@ public class LoginFormFactory {
 		private boolean checkFields() {
 			try {
 				if(username.getValue().isEmpty()) {
-					throw new Exception("Nie podano loginu");
+					throw new Exception("Не указан логин");
 				} else if(passwordField.getValue().isEmpty()) {
-					throw new Exception("Nie podano hasła");
+					throw new Exception("Не указан пароль");
 				}
 				if(!userController.isUserExists(username.getValue())) {
-					throw new Exception("Użytkownik o takim loginie nie istnieje");
+					throw new Exception("Пользователь с таким логином не существует!");
 				}
 			} catch (Exception e) {
-				Notification.show("Błąd", e.getMessage(), Type.ERROR_MESSAGE);
+				Notification.show("Ошибка", e.getMessage(), Type.ERROR_MESSAGE);
 				return false;
 			}
 			return true;

@@ -53,7 +53,7 @@ public class AddEditSavingsWindow extends Window implements ClickListener {
 	}
 
 	private void setWindowSettings() {
-		String title = element.getId() == null ? "Dodaj" : "Edytuj";
+		String title = element.getId() == null ? "Добавить" : "Удалить";
 		setCaption(title);
 		center();
 		setSizeUndefined();
@@ -64,18 +64,18 @@ public class AddEditSavingsWindow extends Window implements ClickListener {
 	private void bind() {
 		binder = new Binder<>(Savings.class);
 		binder.setBean(element);	
-		binder.forMemberField(amount).withConverter(new StringToBigDecimalConverter("Wprowadzona wartość nie jest liczbą"));
+		binder.forMemberField(amount).withConverter(new StringToBigDecimalConverter("Сумма не правильная!"));
 		binder.bindInstanceFields(this);
 	}
 
 	private void layout() {
 		root = new VerticalLayout();
-		name = new TextField("Nazwa");
-		amount = new TextField("Kwota");
-		String title = element.getId() == null ? "Dodaj" : "Zmień";
+		name = new TextField("Заказ");
+		amount = new TextField("Сумма С НДС");
+		String title = element.getId() == null ? "Добавить" : "Удалить";
 		saveBtn = new Button(title, this);
-		clearBtn = new Button("Wyczyść", this);
-		removeBtn = new Button("Usuń", this);
+		clearBtn = new Button("Очистить", this);
+		removeBtn = new Button("Удалить", this);
 		
 		root.addComponent(name);
 		root.addComponent(amount);
@@ -106,7 +106,7 @@ public class AddEditSavingsWindow extends Window implements ClickListener {
 		try {
 			binder.writeBean(element);
 			savingsController.saveOrUpdateEntry(element);
-			Notification.show("Zapisano");
+			Notification.show("Записано");
 			refreshUI();
 		} catch (ValidationException e) {
 			Notification.show(e.getMessage());
@@ -116,7 +116,7 @@ public class AddEditSavingsWindow extends Window implements ClickListener {
 	
 	private void delete(Long id) {
 		savingsController.delete(id);
-		Notification.show("Wpis został usunięty");
+		Notification.show("Запись удалена");
 		refreshUI();
 	}
 	

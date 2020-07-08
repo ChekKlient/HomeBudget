@@ -49,10 +49,10 @@ public class ShowAllEntriesView extends VerticalLayout implements View, Refresha
     	table = new Grid<>(Entry.class);
     	table.setItems(list);
     	table.setColumnOrder("date", "entryType", "description", "amount");
-    	table.getColumn("date").setCaption("Data zdarzenia");
-    	table.getColumn("entryType").setCaption("Rodzaj wpisu");
-    	table.getColumn("description").setCaption("Opis");
-    	table.getColumn("amount").setCaption("Kwota");
+    	table.getColumn("date").setCaption("Дата");
+    	table.getColumn("entryType").setCaption("Статья");
+    	table.getColumn("description").setCaption("Заказ");
+    	table.getColumn("amount").setCaption("Сумма");
     	table.removeColumn("id");
     	table.removeColumn("user");
     	table.setSizeFull();
@@ -67,7 +67,7 @@ public class ShowAllEntriesView extends VerticalLayout implements View, Refresha
 						AddEditEntryWindow window = new AddEditEntryWindow(event.getItem(), entryController, entryTypeController, UI.getCurrent());
 						UI.getCurrent().addWindow(window);
 					} else {
-						Notification.show("Okno jest już otwarte", Notification.Type.WARNING_MESSAGE);
+						Notification.show("Есть открытое окно!", Notification.Type.WARNING_MESSAGE);
 					}
 				}
 			}
@@ -82,10 +82,10 @@ public class ShowAllEntriesView extends VerticalLayout implements View, Refresha
     
     private Layout createButtonsLayout() {
     	Layout buttonsLayout = new HorizontalLayout();
-    	Button allBtn = new Button("Wszystkie", e->refreshTable(Entries.GET_ALL));
-    	Button yearBtn = new Button("Aktualny rok", e->refreshTable(Entries.GET_CURRENT_YEAR));
-    	Button monthBtn = new Button("Aktualny miesiąc", e->refreshTable(Entries.GET_CURRENT_MONTH));
-    	Button last10Btn = new Button("Ostatnie 10", e->refreshTable(Entries.GET_LAST_10));
+    	Button allBtn = new Button("Все", e->refreshTable(Entries.GET_ALL));
+    	Button yearBtn = new Button("Год", e->refreshTable(Entries.GET_CURRENT_YEAR));
+    	Button monthBtn = new Button("Месяц", e->refreshTable(Entries.GET_CURRENT_MONTH));
+    	Button last10Btn = new Button("Последние 10", e->refreshTable(Entries.GET_LAST_10));
     	buttonsLayout.addComponent(allBtn);
     	buttonsLayout.addComponent(yearBtn);
     	buttonsLayout.addComponent(monthBtn);
