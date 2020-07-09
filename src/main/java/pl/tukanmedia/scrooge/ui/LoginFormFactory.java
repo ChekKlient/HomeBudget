@@ -49,11 +49,10 @@ public class LoginFormFactory {
 		
 		public LoginForm init() {
 			root = new VerticalLayout();
-			root.setMargin(true);
-			root.setHeight("100%");
+			//root.setMargin(true);
+			//root.setHeight("100%");
 
-			Responsive.makeResponsive(root);
-			
+
 			panel = new Panel("Авторизация");
 			panel.setSizeUndefined();
 			
@@ -78,9 +77,12 @@ public class LoginFormFactory {
 		}
 		
 		public Component layout() {
+			root.addStyleName("myresponsive");
 			root.addComponent(panel);
 			root.setComponentAlignment(panel, Alignment.MIDDLE_CENTER);
-			
+
+			Responsive.makeResponsive(root);
+
 			FormLayout loginLayout = new FormLayout();
 			loginLayout.addComponent(username);
 			loginLayout.addComponent(passwordField);
