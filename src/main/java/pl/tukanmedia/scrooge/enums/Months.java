@@ -2,7 +2,7 @@ package pl.tukanmedia.scrooge.enums;
 
 public enum Months  {
 	
-	JANUARY(1L, "Styczeń"),
+	JANUARY(1L, "Zydfhm"),
 	FEBRUARY(2L, "Luty"),
 	MARCH(3L, "Marzec"),
 	APRIL(4L, "Kwiecień"),

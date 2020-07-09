@@ -1,5 +1,6 @@
 package pl.tukanmedia.scrooge.ui;
 
+import com.vaadin.server.Responsive;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -50,6 +51,8 @@ public class LoginFormFactory {
 			root = new VerticalLayout();
 			root.setMargin(true);
 			root.setHeight("100%");
+
+			Responsive.makeResponsive(root);
 			
 			panel = new Panel("Авторизация");
 			panel.setSizeUndefined();
